@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Module1_Activity01"
+             x:Class="Module1_Activity01.MainPage">
+
+    <StackLayout>
+
+        <Label Text="{Binding Value, StringFormat='{0:F0}&#x00B0; rotation'}"
+               FontSize="{x:StaticExtension Member=local:MainClass.NormalFontSize}" 
+               BindingContext="{x:Reference slider}"
+               Rotation="{Binding Value}"
+               HorizontalOptions="CenterAndExpand"
+               />
+
+        <Slider x:Name="slider"
+            Maximum="360"
+            VerticalOptions="Center" />
+
+
+        <Button Text="Rotating Button"
+                BackgroundColor ="{x:Static local:MainClass.BColor}" 
+                Margin="0,50,0,0"
+                TextColor="White"/>
+
+        <ListView Margin="0,0,0,0">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type Color}">
+                    <Color>Blue</Color>
+                    <Color>Green</Color>
+                    <Color>Yellow</Color>
+                    <Color>Gray</Color>
+                    <Color>Red</Color>
+                </x:Array>
+            </ListView.ItemsSource>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <BoxView Color="{Binding}" Margin="3" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
